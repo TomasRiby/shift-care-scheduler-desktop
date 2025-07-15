@@ -1,24 +1,43 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { invoke } from "@tauri-apps/api/core";
+import {Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
+import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {WorkerService} from "./worker/worker.service";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    imports: [CommonModule, RouterOutlet, ReactiveFormsModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
-  greetingMessage = "";
+    greetingMessage = "";
 
-  greet(event: SubmitEvent, name: string): void {
-    event.preventDefault();
+    workerService: WorkerService = inject(WorkerService);
 
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    invoke<string>("greet", { name }).then((text) => {
-      this.greetingMessage = text;
-    });
-  }
+    constructor() {
+    }
+
+    workerForm = new FormGroup({
+        name: new FormControl(""),
+        contact: new FormControl("")
+    })
+
+
+    onSubmit(){
+
+        let name = this.workerForm.get("name")?.value
+        let contact = this.workerForm.get("contact")?.value
+
+        console.log(name, contact)
+
+        if (name != null && contact!= null) {
+            this.create_worker(name, contact)
+        }
+    }
+
+    create_worker(name: string, contact: string) {
+        this.workerService.create_worker(name,contact)
+    }
 }
