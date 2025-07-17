@@ -1,22 +1,8 @@
 <main class="container">
     <h1>Welcome to Tauri + Angular!</h1>
-
-    <div class="row">
-        <a href="https://tauri.app" target="_blank">
-            <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo"/>
-        </a>
-        <a href="https://angular.io" target="_blank">
-            <img src="/assets/angular.svg" class="logo angular" alt="Angular logo"/>
-        </a>
-    </div>
-    <p>Click on the logos to learn more about the frameworks</p>
-
-    <form [formGroup]="workerForm" (ngSubmit)="onSubmit()">
-        <label for="name">Name: </label>
-        <input id="name" type="text" formControlName="name">
-        <label for="name">Contact: </label>
-        <input id="contact" type="text" formControlName="contact">
-        <button type="submit">Submit</button>
-    </form>
-    <p>{{ greetingMessage }}</p>
+    <app-month-calendar-view></app-month-calendar-view>
+    <br>
+    <app-week-calendar-view></app-week-calendar-view>
+    <br>
+    <app-day-calendar-view></app-day-calendar-view>
 </main>

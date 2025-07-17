@@ -3,41 +3,24 @@ import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {WorkerService} from "./worker/worker.service";
+import {WorkerComponent} from "./worker/worker.component";
+import {MonthCalendarViewComponent} from "./month-calendar-view/month-calendar-view.component";
+import {WeekCalendarViewComponent} from "./week-calendar-view/week-calendar-view.component";
+import {DayCalendarViewComponent} from "./day-calendar-view/day-calendar-view.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [CommonModule, RouterOutlet, ReactiveFormsModule],
+    imports: [CommonModule, RouterOutlet, ReactiveFormsModule, WorkerComponent, MonthCalendarViewComponent, WeekCalendarViewComponent, DayCalendarViewComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
 export class AppComponent {
-    greetingMessage = "";
 
-    workerService: WorkerService = inject(WorkerService);
 
     constructor() {
     }
 
-    workerForm = new FormGroup({
-        name: new FormControl(""),
-        contact: new FormControl("")
-    })
 
 
-    onSubmit(){
-
-        let name = this.workerForm.get("name")?.value
-        let contact = this.workerForm.get("contact")?.value
-
-        console.log(name, contact)
-
-        if (name != null && contact!= null) {
-            this.create_worker(name, contact)
-        }
-    }
-
-    create_worker(name: string, contact: string) {
-        this.workerService.create_worker(name,contact)
-    }
 }
