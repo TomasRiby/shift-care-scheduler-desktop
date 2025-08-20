@@ -26,5 +26,5 @@ npm install
 Then to start server go:
 
 ```zsh
-npm run start dev
+npm run tauri dev
 ```
