@@ -6,12 +6,11 @@ import {WorkerService} from "./worker/worker.service";
 import {WorkerComponent} from "./worker/worker.component";
 import {MonthCalendarViewComponent} from "./month-calendar-view/month-calendar-view.component";
 import {WeekCalendarViewComponent} from "./week-calendar-view/week-calendar-view.component";
-import {DayCalendarViewComponent} from "./day-calendar-view/day-calendar-view.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [CommonModule, RouterOutlet, ReactiveFormsModule, WorkerComponent, MonthCalendarViewComponent, WeekCalendarViewComponent, DayCalendarViewComponent],
+    imports: [CommonModule, RouterOutlet, ReactiveFormsModule, WorkerComponent, MonthCalendarViewComponent, WeekCalendarViewComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
@@ -20,7 +19,6 @@ export class AppComponent {
 
     constructor() {
     }
-
 
 
 }
