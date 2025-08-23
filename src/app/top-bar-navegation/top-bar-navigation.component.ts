@@ -1,11 +1,13 @@
 import {Component, inject} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 
 @Component({
     selector: 'app-top-bar-navigation',
     standalone: true,
-    imports: [],
+    imports: [
+        RouterLink
+    ],
     templateUrl: './top-bar-navigation.component.html',
     styleUrl: './top-bar-navigation.component.css'
 })

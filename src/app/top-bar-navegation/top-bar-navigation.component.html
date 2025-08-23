@@ -1,2 +1,9 @@
 <button (click)="goBack()" [disabled]="!canGoBack">←</button>
 <button (click)="goForward()" [disabled]="!canGoForward">→</button>
+<nav>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/month">Month</a>
+    <a routerLink="/day">Day</a>
+    <a routerLink="/week">Week</a>
+    <a routerLink="/worker">Worker</a>
+</nav>

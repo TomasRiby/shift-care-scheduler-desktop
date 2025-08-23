@@ -29,13 +29,14 @@ export class WorkerComponent {
         let contact = this.workerForm.get("contact")?.value
 
         console.log(name, contact)
-
-        if (name != null && contact != null) {
-            this.create_worker(name, contact)
-        }
+        this.create_worker(name, contact)
     }
 
-    create_worker(name: string, contact: string) {
-        this.workerService.create_worker(name, contact)
+    create_worker(name: string | null | undefined, contact: string | null | undefined) {
+        if (name != null && contact != null) {
+            this.workerService.create_worker(name, contact)
+        } else {
+            console.log("Worker not created. Name and contact can't be Null. Please try again");
+        }
     }
 }
